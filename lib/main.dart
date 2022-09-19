@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -35,47 +36,72 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'You have pushed the button thsssssmes:',
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
-                  ),
-                ),
-                labelText: "Username *",
-              ),
-              keyboardType: TextInputType.emailAddress,
-              readOnly: false,
-              maxLength: 50,
-              onChanged: (value) {
-                setState(() {});
-              },
-            ),
-          ],
+        child: Container(
+          margin: const EdgeInsets.only(
+            top: 30.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildUsernameField(),
+              _buildPasswordField(),
+            ],
+          ),
         ),
-
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: <Widget>[
-
-        //   ],
-        // ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Widget _buildUsernameField() {
+  return Container(
+    margin: const EdgeInsets.only(
+      top: 30.0,
+      left: 30.0,
+      right: 30.0,
+    ),
+    child: TextFormField(
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+        ),
+        labelText: "Username *",
+        prefixIcon: Icon(
+          Icons.admin_panel_settings_rounded,
+        ),
+      ),
+      keyboardType: TextInputType.emailAddress,
+      readOnly: false,
+      maxLength: 50,
+      onChanged: (value) {},
+    ),
+  );
+}
+
+Widget _buildPasswordField() {
+  return Container(
+    margin: const EdgeInsets.only(
+      top: 10.0,
+      left: 30.0,
+      right: 30.0,
+    ),
+    child: TextFormField(
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+        ),
+        labelText: "Password *",
+        prefixIcon: Icon(Icons.password_rounded),
+      ),
+      keyboardType: TextInputType.visiblePassword,
+      readOnly: false,
+      maxLength: 50,
+      onChanged: (value) {},
+    ),
+  );
 }
