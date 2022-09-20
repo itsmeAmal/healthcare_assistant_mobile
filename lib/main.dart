@@ -39,13 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Container(
           margin: const EdgeInsets.only(
-            top: 30.0,
+            top: 300.0,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildUsernameField(),
               _buildPasswordField(),
+              _buildSignInButtonField(),
             ],
           ),
         ),
@@ -53,6 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// Widget _buildWelcomeText() {}
 
 Widget _buildUsernameField() {
   return Container(
@@ -65,12 +68,12 @@ Widget _buildUsernameField() {
       decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
+            Radius.circular(50.0),
           ),
         ),
         labelText: "Username *",
         prefixIcon: Icon(
-          Icons.admin_panel_settings_rounded,
+          Icons.person,
         ),
       ),
       keyboardType: TextInputType.emailAddress,
@@ -92,16 +95,34 @@ Widget _buildPasswordField() {
       decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
+            Radius.circular(50.0),
           ),
         ),
         labelText: "Password *",
-        prefixIcon: Icon(Icons.password_rounded),
+        prefixIcon: Icon(Icons.lock),
       ),
       keyboardType: TextInputType.visiblePassword,
       readOnly: false,
       maxLength: 50,
       onChanged: (value) {},
+    ),
+  );
+}
+
+Widget _buildSignInButtonField() {
+  return Container(
+    margin: const EdgeInsets.only(
+      top: 10.0,
+      left: 60.0,
+      right: 60.0,
+    ),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50.0))),
+          minimumSize: const Size.fromHeight(45)),
+      onPressed: () {},
+      child: null,
     ),
   );
 }
