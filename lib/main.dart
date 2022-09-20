@@ -36,18 +36,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.only(
-            top: 300.0,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildUsernameField(),
-              _buildPasswordField(),
-              _buildSignInButtonField(),
-            ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.only(
+              top: 200.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildWelcomeText(),
+                _buildLoginToAccountText(),
+                _buildUsernameField(),
+                _buildPasswordField(),
+                _buildSignInButtonField(),
+              ],
+            ),
           ),
         ),
       ),
@@ -66,6 +70,8 @@ Widget _buildUsernameField() {
     ),
     child: TextFormField(
       decoration: const InputDecoration(
+        hintText: "Username",
+        contentPadding: EdgeInsets.symmetric(vertical: 15.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(50.0),
@@ -76,6 +82,7 @@ Widget _buildUsernameField() {
           Icons.person,
         ),
       ),
+      textInputAction: TextInputAction.done,
       keyboardType: TextInputType.emailAddress,
       readOnly: false,
       maxLength: 50,
@@ -93,6 +100,8 @@ Widget _buildPasswordField() {
     ),
     child: TextFormField(
       decoration: const InputDecoration(
+        hintText: "Password",
+        contentPadding: EdgeInsets.symmetric(vertical: 15.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(50.0),
@@ -102,6 +111,7 @@ Widget _buildPasswordField() {
         prefixIcon: Icon(Icons.lock),
       ),
       keyboardType: TextInputType.visiblePassword,
+      textInputAction: TextInputAction.done,
       readOnly: false,
       maxLength: 50,
       onChanged: (value) {},
@@ -113,8 +123,8 @@ Widget _buildSignInButtonField() {
   return Container(
     margin: const EdgeInsets.only(
       top: 10.0,
-      left: 60.0,
-      right: 60.0,
+      left: 120.0,
+      right: 120.0,
     ),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -122,7 +132,54 @@ Widget _buildSignInButtonField() {
               borderRadius: BorderRadius.all(Radius.circular(50.0))),
           minimumSize: const Size.fromHeight(45)),
       onPressed: () {},
-      child: null,
+      child: const Text("Sign in"),
     ),
   );
+}
+
+Widget _buildWelcomeText() {
+  return Container(
+    alignment: Alignment.center,
+    margin: const EdgeInsets.only(
+      top: 10.0,
+      left: 30.0,
+      right: 30.0,
+      bottom: 5.0,
+    ),
+    child: const Text(
+      "Welcome Back!",
+      style: TextStyle(
+        color: Colors.black45,
+        fontSize: 19.0,
+      ),
+    ),
+  );
+}
+
+Widget _buildLoginToAccountText() {
+  return Container(
+    alignment: Alignment.center,
+    margin: const EdgeInsets.only(
+      top: 5.0,
+      left: 20.0,
+      right: 20.0,
+    ),
+    child: const Text(
+      "Login to your account",
+      style: TextStyle(
+        color: Colors.black45,
+        fontSize: 14.0,
+      ),
+    ),
+  );
+}
+
+Widget _buildTopLogoImage() {
+  return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(
+        top: 5.0,
+        left: 10.0,
+        right: 10.0,
+      ));
 }
