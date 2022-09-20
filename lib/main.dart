@@ -35,22 +35,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.only(
-              top: 200.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildWelcomeText(),
-                _buildLoginToAccountText(),
-                _buildUsernameField(),
-                _buildPasswordField(),
-                _buildSignInButtonField(),
-              ],
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: ExactAssetImage('assets/backg2.png'), fit: BoxFit.cover),
+      ),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.only(
+                top: 200.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // _buildTopLogoImage(),
+                  _buildWelcomeText(),
+                  _buildLoginToAccountText(),
+                  _buildUsernameField(),
+                  _buildPasswordField(),
+                  _buildSignInButtonField(),
+                ],
+              ),
             ),
           ),
         ),
@@ -176,10 +183,12 @@ Widget _buildLoginToAccountText() {
 
 Widget _buildTopLogoImage() {
   return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(
-        top: 5.0,
-        left: 10.0,
-        right: 10.0,
-      ));
+    alignment: Alignment.center,
+    margin: const EdgeInsets.only(
+      top: 5.0,
+      left: 10.0,
+      right: 10.0,
+    ),
+    child: Image.asset('assets/images/logo3_1.JPG'),
+  );
 }
